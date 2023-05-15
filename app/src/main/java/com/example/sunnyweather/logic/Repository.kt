@@ -14,7 +14,10 @@ import kotlin.coroutines.CoroutineContext
 
 object Repository {
 
-    fun searchPlaces(query: String) = fire(Dispatchers.IO) {
+    fun searchPlaces(query: String) = fire(Dispatchers.IO) {//Dispatchers.IO
+        // 用于指定协程运行的上下文环境，即为 I/O 密集型任务专门分配的线程池。
+        // 使用此上下文环境可以确保异步执行网络请求等耗时操作不会阻塞主线程。
+        
         val placeResponse = SunnyWeatherNetwork.searchPlaces(query)
         if (placeResponse.status == "ok") {
             val places = placeResponse.places

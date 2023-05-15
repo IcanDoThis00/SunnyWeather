@@ -50,6 +50,9 @@ class PlaceFragment: Fragment() {
                 adapter.notifyDataSetChanged()
             }
         }
+        //viewLifecycleOwner 参数用于指定 LifecycleOwner 的实例，
+        // 该实例用于控制 ViewModel 的生命周期。
+        // 即使用该方法指定的 viewLifecycleOwner 对象来管理此 LiveData 的生命周期，使得 LiveData 在界面关闭时及时清理资源，避免内存泄漏
         viewModel.placeLiveData.observe(viewLifecycleOwner, Observer { result ->
             val place = result.getOrNull()
             if (place != null){
