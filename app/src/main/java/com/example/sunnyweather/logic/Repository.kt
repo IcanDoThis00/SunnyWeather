@@ -10,6 +10,7 @@ import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope
 import java.lang.Exception
 import java.lang.RuntimeException
+import com.example.sunnyweather.logic.dao.PlaceDao
 import kotlin.coroutines.CoroutineContext
 
 object Repository {
@@ -51,11 +52,11 @@ object Repository {
         }
     }
 
-//    fun savePlace(place: Place) = PlaceDao.savePlace(place)
-//
-//    fun getSavedPlace() = PlaceDao.getSavedPlace()
-//
-//    fun isPlaceSaved() = PlaceDao.isPlaceSaved()
+    fun savePlace(place: Place) = PlaceDao.savePlace(place)
+
+    fun getSavedPlace() = PlaceDao.getSavedPlace()
+
+    fun isPlaceSaved() = PlaceDao.isPlaceSaved()
 
     private fun <T> fire(context: CoroutineContext, block: suspend () -> Result<T>) =
         liveData<Result<T>>(context) {
